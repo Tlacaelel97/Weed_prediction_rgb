@@ -16,3 +16,22 @@ python train_rgb_model.py \
   --min_samples_leaf 2 \
   --seed 42
 ```
+
+Parar realizar detecciones sobre un archivo tif:
+
+```
+python detect_rgb.py \
+  --raster "data/IN/Lalo Campos_Abril.tif" \
+  --model models/rf_rgb_model_cuml.pkl \
+  --output data/OUT/weed_pred_gpu.tif \
+  --threshold_exg 20
+Cargando modelo desde 'models/rf_rgb_model_cuml.pkl' → ejecutando en GPU (cuML)
+Predicción completada: 'data/OUT/weed_pred_gpu.tif'
+```
+Para convertir los archivos tif de la prediccion a shapefile podemos hacer lo siguiente
+
+```
+python raster_to_shapefile.py \
+  -i data/OUT/weed_pred.tif \
+  -o data/OUT/weed_polygons.shp
+```
