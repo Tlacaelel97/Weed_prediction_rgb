@@ -4,3 +4,4 @@ scikit-learn
 tqdm
 rasterio
 opencv-python
+cupy-cuda12x
