@@ -35,3 +35,34 @@ python raster_to_shapefile.py \
   -i data/OUT/weed_pred.tif \
   -o data/OUT/weed_polygons.shp
 ```
+
+## Transformar mascara png a geotif
+```bash
+gdal_translate \
+  -of GTiff \
+  -a_srs EPSG:4326 \
+  -a_ullr -102.3442102 21.4011496 -102.3369427 21.3944741 \
+  data/OUT/overlay_heatmap.png \
+  overlay_heatmap_geo.tif
+```
+
+## Reproyectar a WebMercator (EPSG:3857) para encajar el esquema
+
+```bash
+gdalwarp \
+  -t_srs EPSG:3857 \
+  -r near \
+  -co COMPRESS=LZW \
+  overlay_heatmap_geo.tif \
+  overlay_heatmap_3857.tif
+```
+
+## Teselear en {z}/{x}/{y}.png
+
+```bash
+gdal2tiles.py \
+  -z 14-22 \
+  -w none \
+  overlay_heatmap_3857.tif \
+  data/OUT/tiles_mask
+```
