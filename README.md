@@ -46,6 +46,14 @@ Basta con ejecutar:
 python tif2HM.py
 ```
 
+## Creacion de mascara a partir de los datos BN
+
+```bash
+python invert_mask.py \
+  -i weed_pred.tif \
+  -o weed_pred_inv.tif
+```
+
 Es importante asegurarse de especificar en el script las rutas de entrada y de salida de 
 los tif y png
 
