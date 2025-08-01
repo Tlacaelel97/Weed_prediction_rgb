@@ -36,7 +36,26 @@ python raster_to_shapefile.py \
   -o data/OUT/weed_polygons.shp
 ```
 
+# Creacion de mascaras y tiles a partir de las detecciones
+
+## Creacion de mascara
+
+Basta con ejecutar:
+
+```bash
+python tif2HM.py
+```
+
+Es importante asegurarse de especificar en el script las rutas de entrada y de salida de 
+los tif y png
+
+## Extraccion de datos geoespaciales
+
+gdalinfo ruta/a/tif
+
 ## Transformar mascara png a geotif
+
+Para ser esto se debe de incluir la información extraida en el paso anterior, con el objetivo de añadr los datos geográficos. Se debe usar upper left seguido de lower right
 ```bash
 gdal_translate \
   -of GTiff \

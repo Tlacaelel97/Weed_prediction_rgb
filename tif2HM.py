@@ -3,8 +3,8 @@ import numpy as np
 
 # 1) Carga imágenes
 # Sustituye estas rutas por las tuyas (pueden ser .tif, .png, .jpg…)
-orig = cv2.imread('data/IN/De Sergio_Ortofoto.tif', cv2.IMREAD_COLOR)
-mask = cv2.imread('weed_pred_proan_pivote.tif', cv2.IMREAD_GRAYSCALE)
+orig = cv2.imread('data/IN/proan_pivote.tif', cv2.IMREAD_COLOR)
+mask = cv2.imread('data/OUT/weed_pred_proan_pivote.tif', cv2.IMREAD_GRAYSCALE)
 
 # 2) Normaliza la máscara a 0-255
 mask_norm = cv2.normalize(mask, None, 0, 255, cv2.NORM_MINMAX).astype(np.uint8)
@@ -21,4 +21,4 @@ overlay = cv2.addWeighted(orig, 1-alpha, heatmap, alpha, 0)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 # Para guardar:
-cv2.imwrite('overlay_heatmap.png', overlay)
+cv2.imwrite('data/OUT/proan_pivote/mask.png', overlay)
